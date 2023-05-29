@@ -6,6 +6,7 @@ body {
   color: #fff;
   font-size: 1.5em;
   text-align: center;
+  justify-content: center;
 }
 
 .numpad {
@@ -13,7 +14,7 @@ body {
   grid-template-columns: repeat(3, 4em);
   grid-template-rows: repeat(4, 4em);
   gap: 1em;
-  margin: 0 40%;
+  justify-self: center;
   color: #fff;
   justify-content: center;
 }
@@ -35,12 +36,19 @@ button:hover {
 
 .grid-wrapper {
   display: grid;
-  margin-top: 2em;
+  margin: 3em 0;
 }
 
-.error-msg {
-    position: absolute;
-    margin: 0 45%;
+/* .error-msg {
+    justify-self: center;
     color: whitesmoke;
     font-size: 2em;
+    margin-top: 1em;
+} */
+
+.zero {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 4;
+    grid-row-end: 4;
 }
