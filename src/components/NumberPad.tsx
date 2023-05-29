@@ -6,13 +6,14 @@ const NumberPad = () => {
     const screenPassword = '1337'
 
     const [pressedNumber, setPressedNumber] = useState<number[]>([]);
+    const [error, setError] = useState<string>('');
 
     useEffect(() => {
         if (pressedNumber.length === 4) {
             if (pressedNumber.join('') === screenPassword) {
-                console.log('correct');
+                setError('Welcome');
             } else {
-                console.log('try again');
+                setError('Incorrect passcode');
                 setPressedNumber([]);
             }
         }
@@ -20,6 +21,7 @@ const NumberPad = () => {
 
     return (
         <div className="grid-wrapper">
+            <p>{error}</p>
             <div className="numpad">
                 {numbers.map((number, i) => (
                     <button
