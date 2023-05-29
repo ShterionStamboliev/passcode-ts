@@ -7,10 +7,14 @@ const NumberPad = () => {
 
     const [pressedNumber, setPressedNumber] = useState<number[]>([]);
     const [error, setError] = useState<string>('');
+    const [isCorrect, setIsCorrect] = useState<boolean>(false);
 
     useEffect(() => {
-        if (pressedNumber.length === 4) {
+        if (pressedNumber.length === 1) {
+            setError('');
+        } else if (pressedNumber.length === 4) {
             if (pressedNumber.join('') === screenPassword) {
+                setIsCorrect(true);
                 setError('Welcome');
             } else {
                 setError('Incorrect passcode');
@@ -20,20 +24,26 @@ const NumberPad = () => {
     }, [pressedNumber]);
 
     return (
-        <div className="grid-wrapper">
-            <p>{error}</p>
-            <div className="numpad">
-                {numbers.map((number, i) => (
-                    <button
-                        key={i}
-                        onClick={() => {
-                            setPressedNumber((current) => [...current, number])
-                        }}>
-                        {number}
-                    </button>
-                ))}
+        <>
+            <div className="error-msg">
+                {error}
             </div>
-        </div>
+            <div className="grid-wrapper">
+
+                <div className="numpad">
+                    {numbers.map((number, i) => (
+                        <button
+                            key={i}
+                            onClick={() => {
+                                setPressedNumber((current) => [...current, number])
+                            }}>
+                            {number}
+                        </button>
+                    ))}
+                </div>
+            </div>
+        </>
+
     );
 };
 
