@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 const NumberPad = () => {
 
@@ -25,10 +25,12 @@ const NumberPad = () => {
 
     return (
         <>
-            <div className="error-msg">
-                {error}
-            </div>
-            <div className="grid-wrapper">
+            {
+            isCorrect ? (
+                <div className="error-msg">
+                    {error}
+                </div>
+            ) : <div className="grid-wrapper">
 
                 <div className="numpad">
                     {numbers.map((number, i) => (
@@ -41,9 +43,12 @@ const NumberPad = () => {
                         </button>
                     ))}
                 </div>
+                <div className="error-msg">
+                    {error}
+                </div>
             </div>
+            }
         </>
-
     );
 };
 
