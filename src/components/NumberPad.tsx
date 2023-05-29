@@ -26,27 +26,28 @@ const NumberPad = () => {
     return (
         <>
             {
-            isCorrect ? (
-                <div className="error-msg">
-                    {error}
-                </div>
-            ) : <div className="grid-wrapper">
+                isCorrect ? (
+                    <div className="error-msg" style={{textAlign: 'center', color: 'whitesmoke', fontSize: '2em'}}>
+                        {error}
+                    </div>
+                ) : <div className="grid-wrapper">
 
-                <div className="numpad">
-                    {numbers.map((number, i) => (
-                        <button
-                            key={i}
-                            onClick={() => {
-                                setPressedNumber((current) => [...current, number])
-                            }}>
-                            {number}
-                        </button>
-                    ))}
+                    <div className="numpad">
+                        {numbers.map((number, i) => (
+                            <button
+                                className={number === 0 ? 'zero' : ''}
+                                key={i}
+                                onClick={() => {
+                                    setPressedNumber((current) => [...current, number])
+                                }}>
+                                {number}
+                            </button>
+                        ))}
+                    </div>
+                    <div className="error-msg" style={{textAlign: 'center', color: 'whitesmoke', fontSize: '2em', marginTop: ''}}>
+                        {error}
+                    </div>
                 </div>
-                <div className="error-msg">
-                    {error}
-                </div>
-            </div>
             }
         </>
     );
