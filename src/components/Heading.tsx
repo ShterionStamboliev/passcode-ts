@@ -3,7 +3,7 @@ import '../styles/Styles.css'
 
 type HeadingProps = {
     title: string,
-    subTitle: string
+    subTitle: string,
 };
 
 const Heading = ({ title, subTitle }: HeadingProps): ReactElement => {

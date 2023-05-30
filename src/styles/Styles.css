@@ -36,19 +36,16 @@ button:hover {
 
 .grid-wrapper {
   display: grid;
-  margin: 3em 0;
 }
-
-/* .error-msg {
-    justify-self: center;
-    color: whitesmoke;
-    font-size: 2em;
-    margin-top: 1em;
-} */
 
 .zero {
   grid-column-start: 2;
   grid-column-end: 3;
   grid-row-start: 4;
   grid-row-end: 4;
+}
+
+.btns {
+  justify-self: center;
+  width: 220px;
 }

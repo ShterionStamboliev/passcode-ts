@@ -29,7 +29,7 @@ const NumberPad = () => {
 
     const clearScreen = () => {
         setPressedNumber((prev) => (prev.slice(0, setPressedNumber.length - 1)));
-    }
+    };
 
     return (
         <>
@@ -51,35 +51,36 @@ const NumberPad = () => {
                             </button>
                         ))}
                     </div>
+                    
+                    <div className="btns">
+                        <button className='del-btn'
+                            style={{
+                                background: 'none',
+                                bottom: '90px',
+                                left: '80px'
+                            }}
+                            onClick={deleteNum}>Delete</button>
+                        <button className="clr-btn"
+                            style={{
+                                marginLeft: '110px',
+                                background: 'none',
+                                bottom: '113px',
+                                right: '83px'
+                            }}
+                            onClick={clearScreen}>Clear</button>
+                    </div>
                     <div className="error-msg"
                         style={{
                             textAlign: 'center',
-                            color: 'whitesmoke',
+                            color: 'red',
                             fontSize: '2em',
-                            position: 'absolute',
-                            left: '620px',
-                            bottom: '725px'
+                            position: 'relative',
+                            marginTop: '20px'
                         }}>
                         {error}
                     </div>
-                    <button className='del-btn'
-                        style={{
-                            marginTop: '100px',
-                            background: 'none',
-                            position: 'relative',
-                            bottom: '90px',
-                            left: '80px'
-                        }}
-                        onClick={deleteNum}>Delete</button>
-                    <button className="clr-btn" style={{
-                        background: 'none',
-                        position: 'absolute',
-                        top: '510px',
-                        left: '637px'
-                    }} onClick={clearScreen}>
-                        Clear
-                    </button>
                 </div>
+
             }
         </>
     );
