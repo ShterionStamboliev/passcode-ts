@@ -39,8 +39,6 @@ const NumberPad = () => {
                         {error}
                     </div>
                 ) : <div className="grid-wrapper">
-                    {JSON.stringify(pressedNumber)}
-
                     <div className="numpad">
                         {numbers.map((number, i) => (
                             <button
@@ -51,7 +49,6 @@ const NumberPad = () => {
                                 }}>
                                 {number}
                             </button>
-
                         ))}
                     </div>
                     <div className="error-msg"
@@ -59,7 +56,9 @@ const NumberPad = () => {
                             textAlign: 'center',
                             color: 'whitesmoke',
                             fontSize: '2em',
-                            marginTop: ''
+                            position: 'absolute',
+                            left: '620px',
+                            bottom: '725px'
                         }}>
                         {error}
                     </div>
@@ -68,15 +67,15 @@ const NumberPad = () => {
                             marginTop: '100px',
                             background: 'none',
                             position: 'relative',
-                            right: '454px',
-                            bottom: '100px'
+                            bottom: '90px',
+                            left: '80px'
                         }}
                         onClick={deleteNum}>Delete</button>
                     <button className="clr-btn" style={{
                         background: 'none',
                         position: 'absolute',
-                        top: '500px',
-                        left: '614px'
+                        top: '510px',
+                        left: '637px'
                     }} onClick={clearScreen}>
                         Clear
                     </button>
