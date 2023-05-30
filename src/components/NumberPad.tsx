@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 const NumberPad = () => {
 
     const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
-    const screenPassword = '1337'
+    const screenPassword = '123456'
 
     const [pressedNumber, setPressedNumber] = useState<number[]>([]);
     const [error, setError] = useState<string>('');
@@ -12,7 +12,7 @@ const NumberPad = () => {
     useEffect(() => {
         if (pressedNumber.length === 1) {
             setError('');
-        } else if (pressedNumber.length === 4) {
+        } else if (pressedNumber.length === screenPassword.length) {
             if (pressedNumber.join('') === screenPassword) {
                 setIsCorrect(true);
                 setError('Welcome');
@@ -20,17 +20,26 @@ const NumberPad = () => {
                 setError('Incorrect passcode');
                 setPressedNumber([]);
             }
-        }
+        };
     }, [pressedNumber]);
+
+    const deleteNum = () => {
+        setPressedNumber((prev) => (prev.slice(0, -1)));
+    };
+
+    const clearScreen = () => {
+        setPressedNumber((prev) => (prev.slice(0, setPressedNumber.length - 1)));
+    }
 
     return (
         <>
             {
                 isCorrect ? (
-                    <div className="error-msg" style={{textAlign: 'center', color: 'whitesmoke', fontSize: '2em'}}>
+                    <div className="error-msg" style={{ textAlign: 'center', color: 'whitesmoke', fontSize: '2em' }}>
                         {error}
                     </div>
                 ) : <div className="grid-wrapper">
+                    {JSON.stringify(pressedNumber)}
 
                     <div className="numpad">
                         {numbers.map((number, i) => (
@@ -42,11 +51,35 @@ const NumberPad = () => {
                                 }}>
                                 {number}
                             </button>
+
                         ))}
                     </div>
-                    <div className="error-msg" style={{textAlign: 'center', color: 'whitesmoke', fontSize: '2em', marginTop: ''}}>
+                    <div className="error-msg"
+                        style={{
+                            textAlign: 'center',
+                            color: 'whitesmoke',
+                            fontSize: '2em',
+                            marginTop: ''
+                        }}>
                         {error}
                     </div>
+                    <button className='del-btn'
+                        style={{
+                            marginTop: '100px',
+                            background: 'none',
+                            position: 'relative',
+                            right: '454px',
+                            bottom: '100px'
+                        }}
+                        onClick={deleteNum}>Delete</button>
+                    <button className="clr-btn" style={{
+                        background: 'none',
+                        position: 'absolute',
+                        top: '500px',
+                        left: '614px'
+                    }} onClick={clearScreen}>
+                        Clear
+                    </button>
                 </div>
             }
         </>
