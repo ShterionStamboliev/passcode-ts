@@ -3,11 +3,13 @@ import { useState, useEffect } from 'react';
 const NumberPad = () => {
 
     const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+    const dots = ['o', 'o', 'o', 'o', 'o', 'o']
     const screenPassword = '123456'
 
     const [pressedNumber, setPressedNumber] = useState<number[]>([]);
     const [error, setError] = useState<string>('');
     const [isCorrect, setIsCorrect] = useState<boolean>(false);
+    const [color, setColor] = useState<string>('');
 
     useEffect(() => {
         if (pressedNumber.length === 1) {
@@ -31,6 +33,10 @@ const NumberPad = () => {
         setPressedNumber((prev) => (prev.slice(0, setPressedNumber.length - 1)));
     };
 
+    const handleColorChange = () => {
+        
+    }
+
     return (
         <>
             {
@@ -39,6 +45,11 @@ const NumberPad = () => {
                         {error}
                     </div>
                 ) : <div className="grid-wrapper">
+                    <div className="dots" >
+                        {dots.map((dot, i) => (
+                            <div key={i}>{dot}</div>
+                        ))}
+                    </div>
                     <div className="numpad">
                         {numbers.map((number, i) => (
                             <button
@@ -51,7 +62,7 @@ const NumberPad = () => {
                             </button>
                         ))}
                     </div>
-                    
+
                     <div className="btns">
                         <button className='del-btn'
                             style={{

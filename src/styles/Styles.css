@@ -49,3 +49,13 @@ button:hover {
   justify-self: center;
   width: 220px;
 }
+
+.dots {
+  display: flex;
+  width: 300px;
+  margin-bottom: 20px;
+  font-size: 40px;
+  color: white;
+  justify-content: space-between;
+  justify-self: center;
+}
