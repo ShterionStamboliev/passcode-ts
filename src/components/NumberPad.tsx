@@ -10,7 +10,7 @@ const NumberPad = () => {
     const [error, setError] = useState<string>('');
     const [isCorrect, setIsCorrect] = useState<boolean>(false);
     const [borderColor, setBorderColor] = useState<string>('white');
-    
+
 
     useEffect(() => {
         if (pressedNumber.length === 1) {
@@ -35,8 +35,23 @@ const NumberPad = () => {
     };
 
     const handleColorChange = () => {
-            const randomColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
-            setBorderColor(randomColor);
+        const setColor = borderColor === 'white' ? 'green' : 'green';
+        setBorderColor(setColor);
+    };
+
+    const updateCounter = () => {
+        const nums = numbers.map((number, i) => (
+            <button
+                className={number === 0 ? 'zero' : ''}
+                key={i}
+                onClick={() => {
+                    setPressedNumber((current) => [...current, number]);
+                    handleColorChange();
+                }}>
+                {number}
+            </button>
+        ));
+        return nums;
     };
 
     return (
@@ -47,22 +62,13 @@ const NumberPad = () => {
                         {error}
                     </div>
                 ) : <div className="grid-wrapper">
-                    <div className="dots" style={{ color: `${borderColor}` }}>
+                    <div className="dots" >
                         {dots.map((dot, i) => (
-                            <div key={i}>{dot}</div>
+                            <div style={{ color: `${borderColor}` }} key={i}>{dot}</div>
                         ))}
                     </div>
                     <div className="numpad">
-                        {numbers.map((number, i) => (
-                            <button
-                                className={number === 0 ? 'zero' : ''}
-                                key={i}
-                                onClick={() => {
-                                    setPressedNumber((current) => [...current, number])
-                                }}>
-                                {number}
-                            </button>
-                        ))}
+                        {updateCounter()}
                     </div>
 
                     <div className="btns">
